@@ -1,0 +1,57 @@
+---
+title: "DATA_606_Assignment_7"
+author: "Md Jalal Uddin"
+date: "October 9, 2016"
+output: pdf_document
+---
+Problem Set:1
+Please write a function to
+compute the expected value and standard deviation of an array of values. Compare your
+results with that of R's mean and std functions. 
+
+```{r}
+# we know Expected value of x= sum(x) / n=length(x)
+Expected_value <- function(x){
+  if (length(x) != 0)
+     return(sum(x)/length(x))
+}
+x<- c(10,20,30,40,50,60,70)
+Expected_value(x)
+
+# we know, the standard deviation of y= sqrt((x1-mean(x))^2+(x2-mean(x))^2+...+(xn-mean(x))^2)/n-1  where n=lenght(x)
+
+Standard_deviation<- function(x) {
+  
+  if ((length(x)-1) != 0)
+      return(sqrt (sum( (x-Expected_value(x))^2 )  /  (length(x)-1)) )
+}
+
+Standard_deviation(x)
+
+# comparing the funtions with R's mean() and standard deviation
+
+(exp_value(x) == mean(x))
+
+Standard_deviation(x) == sd(x)
+
+
+
+```
+
+
+```{r}
+std_deviation<- function(v) {
+  
+  if ((length(v)-1) != 0)
+      return(sqrt (sum( (v-exp_value(v)  ) ^2  )  /  (length(v)-1)) )
+  }
+
+# validating the standard deviation using sd()
+a<- c(1,2,3,4,5)
+(std_deviation(a) == sd(a))
+```
+
+
+
+
+
